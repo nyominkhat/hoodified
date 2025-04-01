@@ -1,7 +1,7 @@
 {
   "name": "@nyominkhat/hoodified",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -15,7 +15,8 @@
   "dependencies": {
     "@nyominkhat/hoodified": "file:",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
@@ -41,7 +42,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/nyominkhat/hoodified.git"
+    "url": "git+https://github.com/nyominkhat/hoodified.git"
   },
-  "homepage": "https://github.com/nyominkhat/hoodified"
+  "homepage": "https://github.com/nyominkhat/hoodified",
+  "paths": {
+    "@/*": [
+      "./src/*"
+    ],
+    "@hooks": [
+      "./src/hooks/index"
+    ],
+    "@hooks/*": [
+      "./src/hooks/*"
+    ]
+  }
 }

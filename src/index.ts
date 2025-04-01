@@ -1,1 +1,3 @@
-export * from "./hooks";
+import * as hooks from "@hooks";
+
+export { hooks };

@@ -12,6 +12,37 @@ yarn add @nyominkhat/hoodified
 
 ## Available Hooks
 
+### useModals
+
+A hook for managing modals' states and actions.
+
+```typescript
+import { useModals } from "@nyominkhat/hoodified";
+
+function MyComponent() {
+  const { modals, handleOpenModal, handleCloseModal, setModals } = useModals({
+    formModal: {
+      open: false,
+      ...you can add additional data
+    },
+    ...you can add other modals
+  });
+
+  return (
+    <div>
+      <button onClick={() => handleOpenModal("formModal", {additionalData: ...you can add additional data if you want})}>Open Modal</button>
+
+      {modals.formModal.open && (
+        <div className='modal'>
+          <h2>Modal Content</h2>
+          <button onClick={() => handleCloseModal("formModal")}>Close</button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
 ### useLocalStorage
 
 A hook to manage state that persists in localStorage.
@@ -76,30 +107,6 @@ function MyComponent() {
   }, [isMounted]);
 
   return <div>My Component</div>;
-}
-```
-
-### useModals
-
-A hook for managing modal states and actions.
-
-```typescript
-import { useModals } from "@nyominkhat/hoodified";
-
-function MyComponent() {
-  const { openModal, closeModal, isOpen } = useModals();
-
-  return (
-    <div>
-      <button onClick={openModal}>Open Modal</button>
-      {isOpen && (
-        <div className='modal'>
-          <h2>Modal Content</h2>
-          <button onClick={closeModal}>Close</button>
-        </div>
-      )}
-    </div>
-  );
 }
 ```
 
