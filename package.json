@@ -1,5 +1,5 @@
 {
-  "name": "@kaya-kwel-luu-ngl/hoodified",
+  "name": "@nyominkhat/hoodified",
   "private": false,
   "version": "0.0.0",
   "type": "module",
@@ -13,6 +13,7 @@
     "bundle": "tsup src/index.ts"
   },
   "dependencies": {
+    "@nyominkhat/hoodified": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

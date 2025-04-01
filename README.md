@@ -1,54 +1,116 @@
-# React + TypeScript + Vite
+# Hoodified - React Custom Hooks Collection
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A collection of useful and reusable React custom hooks to enhance your React applications.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install @nyominkhat/hoodified
+# or
+yarn add @nyominkhat/hoodified
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Available Hooks
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### useLocalStorage
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+A hook to manage state that persists in localStorage.
+
+```typescript
+import { useLocalStorage } from "@nyominkhat/hoodified";
+
+function MyComponent() {
+  const [value, setValue] = useLocalStorage("my-key", "initial value");
+
+  return (
+    <div>
+      <p>Value: {value}</p>
+      <button onClick={() => setValue("new value")}>Update Value</button>
+    </div>
+  );
+}
 ```
+
+### useDebounce
+
+A hook to debounce any value with a specified delay.
+
+```typescript
+import { useDebounce } from "@nyominkhat/hoodified";
+
+function SearchComponent() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const debouncedSearchTerm = useDebounce(searchTerm, 500);
+
+  useEffect(() => {
+    // Perform search with debouncedSearchTerm
+    console.log("Searching for:", debouncedSearchTerm);
+  }, [debouncedSearchTerm]);
+
+  return (
+    <input
+      type='text'
+      value={searchTerm}
+      onChange={(e) => setSearchTerm(e.target.value)}
+      placeholder='Search...'
+    />
+  );
+}
+```
+
+### useIsMounted
+
+A hook to check if a component is mounted.
+
+```typescript
+import { useIsMounted } from "@nyominkhat/hoodified";
+
+function MyComponent() {
+  const isMounted = useIsMounted();
+
+  useEffect(() => {
+    if (isMounted) {
+      // Perform side effects only if component is mounted
+      console.log("Component is mounted");
+    }
+  }, [isMounted]);
+
+  return <div>My Component</div>;
+}
+```
+
+### useModals
+
+A hook for managing modal states and actions.
+
+```typescript
+import { useModals } from "@nyominkhat/hoodified";
+
+function MyComponent() {
+  const { openModal, closeModal, isOpen } = useModals();
+
+  return (
+    <div>
+      <button onClick={openModal}>Open Modal</button>
+      {isOpen && (
+        <div className='modal'>
+          <h2>Modal Content</h2>
+          <button onClick={closeModal}>Close</button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+MIT © [nyominkhat](https://github.com/nyominkhat)
+
+## Support
+
+If you find this package helpful, please consider giving it a star on GitHub!
