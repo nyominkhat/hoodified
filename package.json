@@ -1,0 +1,46 @@
+{
+  "name": "@kaya-kwel-luu-ngl/hoodified",
+  "private": false,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "bundle": "tsup src/index.ts"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "tsup": "^8.4.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^6.2.0"
+  },
+  "author": "nyominkhat",
+  "license": "MIT",
+  "description": "A React library for building web applications.",
+  "keywords": [
+    "react",
+    "hooks",
+    "library"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nyominkhat/hoodified.git"
+  },
+  "homepage": "https://github.com/nyominkhat/hoodified"
+}
